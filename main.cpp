@@ -39,7 +39,7 @@ public:
 	}
 	void set_metabolism(string met) {
 		lower_case(&met);
-		if (met == "low" || met == "ligh") {
+		if (met == "low" || met == "high") {
 			this->metabolism = met;
 		}
 	}
