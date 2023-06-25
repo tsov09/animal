@@ -6,147 +6,76 @@ using namespace std;
 void test() {
 	cout << endl;
 
+	Vertebrate* f_2 = new Fish("Snapper");
+	Cold_Blooded* f_1 = new Fish("Snapper");
 	Fish* f = new Fish("Snapper");
-	//f->get_data();
 	f->get_type();
+	f_2->voice();
+	f_2->move();
+	f_1->voice();
+	f_1->move();
 	f->voice();
 	f->move();
 	cout << endl;
 
-
-	/*Fish* f_1 = f;
-	f_1->get_data();
-	cout << endl;
-	f_1->voice();
-	cout << endl;
-
-
-	Fish* f_2 = new Fish("Shark");
-	f_2->get_data();
-	cout << endl;
-	f_2->voice();
-	cout << endl;
-
-	f_2 = f;
-	f_2->get_data();
-	cout << endl;
-	f->voice();
-	cout << endl;*/
-
-	Reptile* r = new Reptile("Alligator");
-	//r->get_data();
-	//cout << endl;
+	Vertebrate* r_2 = new Reptile("Snake");
+	Cold_Blooded* r_3 = new Reptile("Snake");
+	Reptile* r = new Reptile("Snake");
 	r->set_sound("bellow");
 	r->get_type();
 	r->voice();
 	r->move();
-
-	cout << endl;
-
-	/*Reptile* r_1 = new Reptile("Snake");
-	r_1->get_data();
-	cout << endl;
-	r_1->set_sound("hiss");
-	r_1->voice();
-	cout << endl;
-
-	Reptile* r_2 = r_1;
-	r_2->get_data();
-	cout << endl;
+	r_3->voice();
+	r_3->move();
 	r_2->voice();
+	r_2->move();
+
 	cout << endl;
 
-	r_2 = r;
-	r_2->get_data();
-	cout << endl;
-	r_2->voice();
-	cout << endl;*/
 
-
+	Vertebrate* a_1 = new Amphibian("frog");
+	Cold_Blooded* a_2 = new Amphibian("frog");
 	Amphibian* a = new Amphibian("Frog");
-	//a->get_data();
-	//cout << endl;
 	a->set_sound("ribbit");
 	a->get_type();
 	a->voice();
 	a->move();
-	cout << endl;
-
-	/*Amphibian* a_1 = new Amphibian("Salamander");
-	a_1->get_data();
-	cout << endl;
 	a_1->voice();
-	cout << endl;
-
-	Amphibian* a_2 = a_1;
-	a_2->get_data();
-	cout << endl;
+	a_1->move();
 	a_2->voice();
+	a_2->move();
+
 	cout << endl;
 
-	a_2 = a;
-	a_2->get_data();
-	cout << endl;
-	a_2->voice();
-	cout << endl;*/
 
+	Vertebrate* b_1 = new Bird("Parrot");
+	Warm_Blooded* b_2 = new Bird("Parrot");
 	Bird* b = new Bird("Parrot");
-	//b->get_data();
-	//cout << endl;
 	b->set_sound("caw");
 	b->get_type();
 	b->voice();
 	b->move();
-	cout << endl;
-
-	/*Bird* b_1 = new Bird("Owl");
-	b_1->get_data();
-	cout << endl;
-	b_1->set_sound("hoot");
 	b_1->voice();
-	cout << endl;
-
-
-	Bird* b_2 = b_1;
-	b_2->get_data();
-	cout << endl;
+	b_1->move();
 	b_2->voice();
+	b_2->move();
+
 	cout << endl;
 
-	b_2 = b;
-	b_2->get_data();
-	cout << endl;
-	b_2->voice();
-	cout << endl;*/
 
+	Vertebrate* m_1 = new Mammal("Dog");
+	Warm_Blooded* m_2 = new Mammal("Dog");
 	Mammal* m = new Mammal("Dog");
-	//m->get_data();
-	//cout << endl;
 	m->set_sound("woof");
 	m->get_type();
 	m->voice();
-	m->move();
-	cout << endl;
-
-	/*Mammal* m_1 = new Mammal("Cat");
-	m_1->get_data();
-	cout << endl;
-	m_1->set_sound("meow");
+	m_1->move();
 	m_1->voice();
-	cout << endl;
+	m_2->move();m->voice();
+	m_2->move();
 
-	Mammal* m_2 = m;
-	m_2->get_data();
-	cout << endl;
-	m_2->voice();
-	cout << endl;
 
-	m_2 = m_1;
-	m_2->get_data();
-	cout << endl;
-	m_2->voice();
-	cout << endl;*/
-
+	delete f, f_1, f_2, r, r_2, r_3, a, a_1, a_2, b, b_1, b_2, m, m_1, m_2;
 }
 
 int main() {

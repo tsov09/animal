@@ -2,7 +2,6 @@
 #include <string>
 
 #include "animal.h"
-
 using namespace std;
 
 void lower_case(string* str) {
@@ -62,10 +61,6 @@ Vertebrate& Vertebrate::operator = (const Vertebrate& obj) {
 		}
 	}
 	return *this;
-}
-
-Vertebrate::~Vertebrate() {
-	delete[] this->characteristics;
 }
 
 void Vertebrate::set_common_characteristics() {
@@ -166,7 +161,10 @@ void Vertebrate::print_data() {
 	cout << "Common characteristics: ";
 	this->print_common_characteristics();
 }
-
+ Vertebrate::~Vertebrate() {
+	cout << "Vertebrate destructor" << endl;
+	delete[] this->characteristics;
+}
 
 Cold_Blooded::Cold_Blooded() {
 	this->set_body_temperature_dependency("Dependent");
@@ -201,6 +199,10 @@ void Cold_Blooded::print_cold_blooded_data() {
 	cout << this->thermoregulation << endl;
 	cout << get_body_temperature_dependency() << endl;
 	cout << get_skin_covering() << endl;
+}
+
+Cold_Blooded::~Cold_Blooded() {
+	cout << "Cold_Blooded destructor" << endl;
 }
 
 
@@ -246,6 +248,9 @@ void Fish::get_data() {
 void Fish::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
 }
+Fish::~Fish() {
+	cout << "Fish destructor" << endl;
+}
 
 
 
@@ -276,7 +281,12 @@ Reptile& Reptile::operator = (const Reptile& obj) {
 	return *this;
 }
 void Reptile::voice() {
-	cout << "Sound: " << this->sound << ";" << endl;
+	if (this->sound.empty()) {
+		cout << "A reptile's sound isn's identical to athers;" << endl;
+	}
+	else {
+		cout << "Sound: " << this->sound << ";" << endl;
+	}
 }
 void Reptile::set_sound(string s) {
 	if (is_valid_string(s)) {
@@ -297,6 +307,9 @@ void Reptile::get_data() {
 }
 void Reptile::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
+}
+Reptile::~Reptile() {
+	cout << "reptile destructor" << endl;
 }
 
 Amphibian::Amphibian() {
@@ -324,7 +337,12 @@ Amphibian& Amphibian::operator = (const Amphibian& obj) {
 	return *this;
 }
 void Amphibian::voice() {
-	cout << "Sound: " << this->sound << ";" << endl;
+	if (this->sound.empty()) {
+		cout << "A amphibian's sound isn's identical to athers;" << endl;
+	}
+	else {
+		cout << "Sound: " << this->sound << ";" << endl;
+	}
 }
 void Amphibian::set_sound(string s) {
 	if (is_valid_string(s)) {
@@ -346,6 +364,9 @@ void Amphibian::get_data() {
 void Amphibian::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
 }
+Amphibian::~Amphibian() {
+	cout << "Amphibian destructor" << endl;
+}
 
 
 Warm_Blooded::Warm_Blooded() {
@@ -364,6 +385,9 @@ void Warm_Blooded::voice() {
 }
 void Warm_Blooded::move() {
 	cout << "walking and swimming or flying and walking or flying, swimming and walking;" << endl;
+}
+Warm_Blooded::~Warm_Blooded() {
+	cout << "Warm blooded destructor" << endl;
 }
 
 
@@ -391,7 +415,12 @@ Bird& Bird::operator = (const Bird& obj) {
 	return *this;
 }
 void Bird::voice() {
-	cout << "Sound: " << this->sound << ";" << endl;
+	if (this->sound.empty()) {
+		cout << "A bird's sound isn's identical to athers;" << endl;
+	}
+	else {
+		cout << "Sound: " << this->sound << ";" << endl;
+	}
 }
 void Bird::set_sound(string s) {
 	if (is_valid_string(s)) {
@@ -412,6 +441,9 @@ void Bird::get_data() {
 }
 void Bird::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
+}
+Bird::~Bird() {
+	cout << "Bird destructor" << endl;
 }
 
 
@@ -439,7 +471,12 @@ Mammal& Mammal::operator = (const Mammal& obj) {
 	return *this;
 }
 void Mammal::voice() {
-	cout << "Sound: " << this->sound << ";" << endl;
+	if (this->sound.empty()) {
+		cout << "A mammal's sound isn's identical to athers;" << endl;
+	}
+	else {
+		cout << "Sound: " << this->sound << ";" << endl;
+	}
 }
 void Mammal::set_sound(string s) {
 	if (is_valid_string(s)) {
@@ -461,5 +498,6 @@ void Mammal::get_data() {
 void Mammal::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
 }
-
-
+Mammal::~Mammal() {
+	cout << "Mammal destructor" << endl;
+}

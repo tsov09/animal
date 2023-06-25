@@ -48,6 +48,7 @@ public:
 	Cold_Blooded();
 	Cold_Blooded(const Cold_Blooded& obj);
 	Cold_Blooded& operator = (const Cold_Blooded& obj);
+	~Cold_Blooded();
 	void voice() override;
 	void move() override;
 	void set_thermoregulation(string t_reg);
@@ -62,7 +63,7 @@ public:
 	Fish(string t);
 	Fish(const Fish& obj);
 	Fish& operator = (const Fish& obj);
-
+	~Fish();
 	void voice() override;
 	void set_type(string t);
 	void move() final;
@@ -78,6 +79,7 @@ public:
 	Reptile(string t);
 	Reptile(const Reptile& obj);
 	Reptile& operator = (const Reptile& obj);
+	~Reptile();
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
@@ -95,7 +97,7 @@ public:
 	Amphibian(string t);
 	Amphibian(const Amphibian& obj);
 	Amphibian& operator = (const Amphibian& obj);
-
+	~Amphibian();
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
@@ -108,6 +110,7 @@ public:
 class Warm_Blooded : public Vertebrate {
 public:
 	Warm_Blooded();
+	~Warm_Blooded();
 	void print_warm();
 	void voice() override;
 	void move() override;
@@ -121,6 +124,7 @@ public:
 	Bird(string t);
 	Bird(const Bird& obj);
 	Bird& operator = (const Bird& obj);
+	~Bird();
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
@@ -137,6 +141,7 @@ public:
 	Mammal(string t);
 	Mammal(const Mammal& obj);
 	Mammal& operator = (const Mammal& obj);
+	~Mammal();
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
