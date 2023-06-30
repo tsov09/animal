@@ -19,13 +19,13 @@ public:
 	Vertebrate();
 	Vertebrate(const Vertebrate& obj);
 	Vertebrate& operator = (const Vertebrate& obj);
-	~Vertebrate();
+	virtual ~Vertebrate();
+	virtual void cln_vrt() = 0;
 	virtual void voice();
 	virtual void move();
 	void set_body_temperature_dependency(string dep);
 	void set_metabolism(string met);
 	void set_skin_covering(string skin_cover);
-
 	void set_heart_chamber_count(int count);
 	void set_type_of_breath(string breath);
 	void set_moving_type(string move);
@@ -48,7 +48,7 @@ public:
 	Cold_Blooded();
 	Cold_Blooded(const Cold_Blooded& obj);
 	Cold_Blooded& operator = (const Cold_Blooded& obj);
-	~Cold_Blooded();
+	~Cold_Blooded() override;
 	void voice() override;
 	void move() override;
 	void set_thermoregulation(string t_reg);
@@ -63,7 +63,8 @@ public:
 	Fish(string t);
 	Fish(const Fish& obj);
 	Fish& operator = (const Fish& obj);
-	~Fish();
+	~Fish() override;
+	void cln_vrt() override;
 	void voice() override;
 	void set_type(string t);
 	void move() final;
@@ -79,7 +80,8 @@ public:
 	Reptile(string t);
 	Reptile(const Reptile& obj);
 	Reptile& operator = (const Reptile& obj);
-	~Reptile();
+	~Reptile() override;
+	void cln_vrt() override;
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
@@ -97,7 +99,8 @@ public:
 	Amphibian(string t);
 	Amphibian(const Amphibian& obj);
 	Amphibian& operator = (const Amphibian& obj);
-	~Amphibian();
+	~Amphibian() override;
+	void cln_vrt() override;
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
@@ -124,7 +127,8 @@ public:
 	Bird(string t);
 	Bird(const Bird& obj);
 	Bird& operator = (const Bird& obj);
-	~Bird();
+	~Bird() override;
+	void cln_vrt() override;
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
@@ -141,7 +145,8 @@ public:
 	Mammal(string t);
 	Mammal(const Mammal& obj);
 	Mammal& operator = (const Mammal& obj);
-	~Mammal();
+	~Mammal() override;
+	void cln_vrt() override;
 	void voice() override;
 	void set_sound(string s);
 	void move() override;

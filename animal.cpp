@@ -165,7 +165,6 @@ void Vertebrate::print_data() {
 	cout << "Vertebrate destructor" << endl;
 	delete[] this->characteristics;
 }
-
 Cold_Blooded::Cold_Blooded() {
 	this->set_body_temperature_dependency("Dependent");
 	this->set_metabolism("Low");
@@ -229,7 +228,9 @@ Fish& Fish::operator = (const Fish& obj) {
 	}
 	return *this;
 }
-
+void Fish::cln_vrt() {
+	cout << endl;
+}
 void Fish::voice() {
 	cout << "No sound;" << endl;
 }
@@ -279,6 +280,9 @@ Reptile& Reptile::operator = (const Reptile& obj) {
 
 	}
 	return *this;
+}
+void Reptile::cln_vrt() {
+	cout << endl;
 }
 void Reptile::voice() {
 	if (this->sound.empty()) {
@@ -335,6 +339,9 @@ Amphibian& Amphibian::operator = (const Amphibian& obj) {
 		this->sound = obj.sound;
 	}
 	return *this;
+}
+void Amphibian::cln_vrt() {
+	cout << endl;
 }
 void Amphibian::voice() {
 	if (this->sound.empty()) {
@@ -414,6 +421,9 @@ Bird& Bird::operator = (const Bird& obj) {
 	}
 	return *this;
 }
+void Bird::cln_vrt() {
+	cout << endl;;
+}
 void Bird::voice() {
 	if (this->sound.empty()) {
 		cout << "A bird's sound isn's identical to athers;" << endl;
@@ -469,6 +479,9 @@ Mammal& Mammal::operator = (const Mammal& obj) {
 		this->sound = obj.sound;
 	}
 	return *this;
+}
+void Mammal::cln_vrt() {
+	cout << endl;
 }
 void Mammal::voice() {
 	if (this->sound.empty()) {
