@@ -27,6 +27,7 @@ bool is_valid_string(string str, int size = 20) {
 Vertebrate::Vertebrate() {
 		this->characteristics = new string[characteristics_size];
 		this->set_common_characteristics();
+		constructor_call_count++;
 	}
 Vertebrate::Vertebrate(const Vertebrate& obj) {
 	this->body_temperature_dependency = obj.body_temperature_dependency;
@@ -138,6 +139,9 @@ string Vertebrate::get_type_of_breath() {
 string Vertebrate::get_moving_type() {
 	return this->moving_type;
 }
+int Vertebrate::get_weight() {
+	return this->weight;
+}
 
 int Vertebrate::get_heart_chamber_count() {
 	return this->heart_chamber_count;
@@ -162,9 +166,12 @@ void Vertebrate::print_data() {
 	this->print_common_characteristics();
 }
  Vertebrate::~Vertebrate() {
-	cout << "Vertebrate destructor" << endl;
+	//cout << "Vertebrate destructor" << endl;
 	delete[] this->characteristics;
 }
+
+
+
 Cold_Blooded::Cold_Blooded() {
 	this->set_body_temperature_dependency("Dependent");
 	this->set_metabolism("Low");
@@ -193,15 +200,13 @@ void Cold_Blooded::set_thermoregulation(string t_reg) {
 string Cold_Blooded::get_thermoregulation() {
 	return this->thermoregulation;
 }
-
 void Cold_Blooded::print_cold_blooded_data() {
 	cout << this->thermoregulation << endl;
 	cout << get_body_temperature_dependency() << endl;
 	cout << get_skin_covering() << endl;
 }
-
 Cold_Blooded::~Cold_Blooded() {
-	cout << "Cold_Blooded destructor" << endl;
+	//cout << "Cold_Blooded destructor" << endl;
 }
 
 
@@ -228,6 +233,22 @@ Fish& Fish::operator = (const Fish& obj) {
 	}
 	return *this;
 }
+bool Fish::operator > (const Fish& obj) {
+	if (this->weight > obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool Fish::operator < (const Fish& obj) {
+	if (this->weight < obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 void Fish::cln_vrt() {
 	cout << endl;
 }
@@ -237,6 +258,11 @@ void Fish::voice() {
 void Fish::set_type(string t) {
 	if (is_valid_string(t)) {
 		this->type = t;
+	}
+}
+void Fish::set_weight(int w) {
+	if (w > 0 && w < 40000) {
+		this->weight = w;
 	}
 }
 void Fish::move() {
@@ -250,7 +276,7 @@ void Fish::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
 }
 Fish::~Fish() {
-	cout << "Fish destructor" << endl;
+	//cout << "Fish destructor" << endl;
 }
 
 
@@ -281,6 +307,22 @@ Reptile& Reptile::operator = (const Reptile& obj) {
 	}
 	return *this;
 }
+bool Reptile::operator > (const Reptile& obj) {
+	if (this->weight > obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool Reptile::operator < (const Reptile& obj) {
+	if (this->weight < obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 void Reptile::cln_vrt() {
 	cout << endl;
 }
@@ -305,6 +347,11 @@ void Reptile::set_type(string t) {
 		this->type = t;
 	}
 }
+void Reptile::set_weight(int w) {
+	if (w > 0 && w < 3000) {
+		this->weight = w;
+	}
+}
 void Reptile::get_data() {
 	cout << "Type: " << this->type << " reptile;" << endl;
 	print_data();
@@ -313,7 +360,7 @@ void Reptile::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
 }
 Reptile::~Reptile() {
-	cout << "reptile destructor" << endl;
+	//cout << "reptile destructor" << endl;
 }
 
 Amphibian::Amphibian() {
@@ -340,6 +387,22 @@ Amphibian& Amphibian::operator = (const Amphibian& obj) {
 	}
 	return *this;
 }
+bool Amphibian::operator > (const Amphibian& obj) {
+	if (this->weight > obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool Amphibian::operator < (const Amphibian& obj) {
+	if (this->weight < obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 void Amphibian::cln_vrt() {
 	cout << endl;
 }
@@ -364,6 +427,11 @@ void Amphibian::set_type(string t) {
 		this->type = t;
 	}
 }
+void Amphibian::set_weight(int w) {
+	if (w > 0 && w < 20) {
+		this->weight = w;
+	}
+}
 void Amphibian::get_data() {
 	cout << "Type: " << this->type << " amphibian;" << endl;
 	print_data();
@@ -372,7 +440,7 @@ void Amphibian::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
 }
 Amphibian::~Amphibian() {
-	cout << "Amphibian destructor" << endl;
+	//cout << "Amphibian destructor" << endl;
 }
 
 
@@ -394,7 +462,7 @@ void Warm_Blooded::move() {
 	cout << "walking and swimming or flying and walking or flying, swimming and walking;" << endl;
 }
 Warm_Blooded::~Warm_Blooded() {
-	cout << "Warm blooded destructor" << endl;
+	//cout << "Warm blooded destructor" << endl;
 }
 
 
@@ -421,6 +489,22 @@ Bird& Bird::operator = (const Bird& obj) {
 	}
 	return *this;
 }
+bool Bird::operator > (const Bird& obj) {
+	if (this->weight > obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool Bird::operator < (const Bird& obj) {
+	if (this->weight < obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 void Bird::cln_vrt() {
 	cout << endl;;
 }
@@ -445,6 +529,11 @@ void Bird::set_type(string t) {
 		this->type = t;
 	}
 }
+void Bird::set_weight(int w) {
+	if (w > 0 && w < 150) {
+		this->weight = w;
+	}
+}
 void Bird::get_data() {
 	cout << "Type: " << this->type << " bird;" << endl;
 	print_data();
@@ -453,7 +542,7 @@ void Bird::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
 }
 Bird::~Bird() {
-	cout << "Bird destructor" << endl;
+	//cout << "Bird destructor" << endl;
 }
 
 
@@ -480,6 +569,22 @@ Mammal& Mammal::operator = (const Mammal& obj) {
 	}
 	return *this;
 }
+bool Mammal::operator > (const Mammal& obj) {
+	if (this->weight > obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool Mammal::operator < (const Mammal& obj) {
+	if (this->weight < obj.weight) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 void Mammal::cln_vrt() {
 	cout << endl;
 }
@@ -504,6 +609,11 @@ void Mammal::set_type(string t) {
 		this->type = t;
 	}
 }
+void Mammal::set_weight(int w) {
+	if (w > 0 && w < 200000) {
+		this->weight = w;
+	}
+}
 void Mammal::get_data() {
 	cout << "Type: " << this->type << " mammal;" << endl;
 	print_data();
@@ -512,5 +622,5 @@ void Mammal::get_type() {
 	cout << "Type: " << this->type << ";" << endl;
 }
 Mammal::~Mammal() {
-	cout << "Mammal destructor" << endl;
+	//cout << "Mammal destructor" << endl;
 }

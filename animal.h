@@ -6,30 +6,38 @@ using namespace std;
 #define ANIMAL_H
 
 class Vertebrate {
+	int characteristics_size = 7;
+	string* characteristics;
 	string body_temperature_dependency;
 	string metabolism;
 	string skin_covering;
 	string type_of_breath;
 	string moving_type;
 	int heart_chamber_count;
-	int characteristics_size = 7;
-	string* characteristics;
 	void set_common_characteristics();
+protected:
+	int weight;
 public:
+	static int constructor_call_count;
+
 	Vertebrate();
 	Vertebrate(const Vertebrate& obj);
 	Vertebrate& operator = (const Vertebrate& obj);
+	void operator()() {
+		std::cout << "Hello from animal functor!" << std::endl;
+	}
 	virtual ~Vertebrate();
 	virtual void cln_vrt() = 0;
 	virtual void voice();
 	virtual void move();
+	virtual void set_weight(int w) = 0;
 	void set_body_temperature_dependency(string dep);
 	void set_metabolism(string met);
 	void set_skin_covering(string skin_cover);
 	void set_heart_chamber_count(int count);
 	void set_type_of_breath(string breath);
 	void set_moving_type(string move);
-
+	int get_weight();
 	string get_body_temperature_dependency();
 	string get_metabolism();
 	string get_skin_covering();
@@ -63,9 +71,12 @@ public:
 	Fish(string t);
 	Fish(const Fish& obj);
 	Fish& operator = (const Fish& obj);
+	bool operator > (const Fish& obj);
+	bool operator < (const Fish& obj);
 	~Fish() override;
 	void cln_vrt() override;
 	void voice() override;
+	void set_weight(int w) override;
 	void set_type(string t);
 	void move() final;
 	void get_data();
@@ -80,9 +91,12 @@ public:
 	Reptile(string t);
 	Reptile(const Reptile& obj);
 	Reptile& operator = (const Reptile& obj);
+	bool operator > (const Reptile& obj);
+	bool operator < (const Reptile& obj);
 	~Reptile() override;
 	void cln_vrt() override;
 	void voice() override;
+	void set_weight(int w) override;
 	void set_sound(string s);
 	void move() override;
 	void set_type(string t);
@@ -99,8 +113,11 @@ public:
 	Amphibian(string t);
 	Amphibian(const Amphibian& obj);
 	Amphibian& operator = (const Amphibian& obj);
+	bool operator > (const Amphibian& obj);
+	bool operator < (const Amphibian& obj);
 	~Amphibian() override;
 	void cln_vrt() override;
+	void set_weight(int w) override;
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
@@ -127,12 +144,15 @@ public:
 	Bird(string t);
 	Bird(const Bird& obj);
 	Bird& operator = (const Bird& obj);
+	bool operator > (const Bird& obj);
+	bool operator < (const Bird& obj);
 	~Bird() override;
 	void cln_vrt() override;
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
 	void set_type(string t);
+	void set_weight(int w) override;
 	void get_data();
 	void get_type();
 };
@@ -145,12 +165,15 @@ public:
 	Mammal(string t);
 	Mammal(const Mammal& obj);
 	Mammal& operator = (const Mammal& obj);
+	bool operator > (const Mammal& obj);
+	bool operator < (const Mammal& obj);
 	~Mammal() override;
 	void cln_vrt() override;
 	void voice() override;
 	void set_sound(string s);
 	void move() override;
 	void set_type(string t);
+	void set_weight(int w) override;
 	void get_data();
 	void get_type();
 };

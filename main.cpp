@@ -3,22 +3,50 @@
 
 using namespace std;
 
-void test() {
-	cout << endl;
+int Vertebrate::constructor_call_count = 0;
 
-	Vertebrate* f_2 = new Fish("Snapper");
+void test() {
+
+
+	//Fish m_1, m_2;
+	//Reptile m_1, m_2;
+	//Amphibian m_1, m_2;
+	//Bird m_1, m_2;
+	Mammal m_1, m_2;
+
+	m_1.set_weight(5);
+	m_2.set_weight(10);
+
+
+	if (m_1 > m_2) {
+		std::cout << "m_1 weight is greater" << std::endl;
+	}
+	else if (m_1 < m_2) {
+		std::cout << "m_2 weight is greater" << std::endl;
+	}
+	else {
+		std::cout << "m_1 and m_2 are equal" << std::endl;
+	}
+
+	m_1();
+
+	std::cout << "Animal default constructor called " << Vertebrate::constructor_call_count++ << " times." << std::endl;
+	
+	
+	/*Vertebrate* f_2 = new Fish("Snapper");
 	Cold_Blooded* f_1 = new Fish("Snapper");
-	Fish* f = new Fish("Snapper");
-	f->get_type();
+	Fish* f = new Fish("Snapper");*/
+	
+	/*f->get_type();
 	f_2->voice();
 	f_2->move();
 	f_1->voice();
 	f_1->move();
 	f->voice();
-	f->move();
-	cout << endl;
+	f->move();*/
 
-	Vertebrate* r_2 = new Reptile("Snake");
+
+	/*Vertebrate* r_2 = new Reptile("Snake");
 	Cold_Blooded* r_3 = new Reptile("Snake");
 	Reptile* r = new Reptile("Snake");
 	r->set_sound("bellow");
@@ -74,11 +102,12 @@ void test() {
 	m_2->move();m->voice();
 	m_2->move();
 
-
 	delete f, f_1, f_2, r, r_2, r_3, a, a_1, a_2, b, b_1, b_2, m, m_1, m_2;
+	f = f_1 = f_2 = r = r_2 = r_3 = a = a_1 = a_2 = b = b_1 = b_2  m = m_1 = m_2 = nullptr;*/
 }
 
 int main() {
+
 	test();
 	return 0;
 }
