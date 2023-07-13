@@ -52,12 +52,7 @@ Vertebrate::Vertebrate(Vertebrate&& obj) {
 	this->moving_type = obj.moving_type;
 	this->heart_chamber_count = obj.heart_chamber_count;
 	this->characteristics_size = obj.characteristics_size;
-
-	this->characteristics = new string[this->characteristics_size];
-	for (int i = 0; i < this->characteristics_size; i++) {
-		this->characteristics[i] = obj.characteristics[i];
-	}
-	delete[] obj.characteristics;
+	this->characteristics = obj.characteristics;
 	obj.characteristics = nullptr;
 	obj.characteristics_size = 0;
 }
@@ -92,11 +87,7 @@ Vertebrate& Vertebrate::operator = (Vertebrate&& obj) {
 		this->characteristics_size = obj.characteristics_size;
 		delete[] this->characteristics;
 		this->characteristics = nullptr;
-		this->characteristics = new string[this->characteristics_size];
-		for (int i = 0; i < this->characteristics_size; i++) {
-			this->characteristics[i] = obj.characteristics[i];
-		}
-		delete[] obj.characteristics;
+		this->characteristics = obj.characteristics;
 		obj.characteristics = nullptr;
 		obj.characteristics_size = 0;
 	}
