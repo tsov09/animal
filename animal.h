@@ -22,7 +22,9 @@ public:
 
 	Vertebrate();
 	Vertebrate(const Vertebrate& obj);
+	Vertebrate(Vertebrate&& obj);
 	Vertebrate& operator = (const Vertebrate& obj);
+	Vertebrate& operator = (Vertebrate&& obj);
 	void operator()() {
 		std::cout << "Hello from animal functor!" << std::endl;
 	}
@@ -55,7 +57,9 @@ class Cold_Blooded : public Vertebrate {
 public:
 	Cold_Blooded();
 	Cold_Blooded(const Cold_Blooded& obj);
+	Cold_Blooded(Cold_Blooded&& obj);
 	Cold_Blooded& operator = (const Cold_Blooded& obj);
+	Cold_Blooded& operator = (Cold_Blooded&& obj);
 	~Cold_Blooded() override;
 	void voice() override;
 	void move() override;
@@ -70,7 +74,9 @@ public:
 	Fish();
 	Fish(string t);
 	Fish(const Fish& obj);
+	Fish(Fish&& obj);
 	Fish& operator = (const Fish& obj);
+	Fish& operator = (Fish&& obj);
 	bool operator > (const Fish& obj);
 	bool operator < (const Fish& obj);
 	~Fish() override;
@@ -90,7 +96,9 @@ public:
 	Reptile();
 	Reptile(string t);
 	Reptile(const Reptile& obj);
+	Reptile(Reptile&& obj);
 	Reptile& operator = (const Reptile& obj);
+	Reptile& operator = (Reptile&& obj);
 	bool operator > (const Reptile& obj);
 	bool operator < (const Reptile& obj);
 	~Reptile() override;
@@ -112,7 +120,9 @@ public:
 	Amphibian();
 	Amphibian(string t);
 	Amphibian(const Amphibian& obj);
+	Amphibian(Amphibian&& obj);
 	Amphibian& operator = (const Amphibian& obj);
+	Amphibian& operator = (Amphibian&& obj);
 	bool operator > (const Amphibian& obj);
 	bool operator < (const Amphibian& obj);
 	~Amphibian() override;
@@ -143,7 +153,9 @@ public:
 	Bird();
 	Bird(string t);
 	Bird(const Bird& obj);
+	Bird(Bird&& obj);
 	Bird& operator = (const Bird& obj);
+	Bird& operator = (Bird&& obj);
 	bool operator > (const Bird& obj);
 	bool operator < (const Bird& obj);
 	~Bird() override;
@@ -164,7 +176,9 @@ public:
 	Mammal();
 	Mammal(string t);
 	Mammal(const Mammal& obj);
+	Mammal(Mammal&& obj);
 	Mammal& operator = (const Mammal& obj);
+	Mammal& operator = (Mammal&& obj);
 	bool operator > (const Mammal& obj);
 	bool operator < (const Mammal& obj);
 	~Mammal() override;

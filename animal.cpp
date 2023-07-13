@@ -25,11 +25,26 @@ bool is_valid_string(string str, int size = 20) {
 }
 
 Vertebrate::Vertebrate() {
-		this->characteristics = new string[characteristics_size];
-		this->set_common_characteristics();
-		constructor_call_count++;
-	}
+	this->characteristics = new string[characteristics_size];
+	this->set_common_characteristics();
+	constructor_call_count++;
+}
 Vertebrate::Vertebrate(const Vertebrate& obj) {
+	this->body_temperature_dependency = obj.body_temperature_dependency;
+	this->metabolism = obj.metabolism;
+	this->skin_covering = obj.skin_covering;
+	this->type_of_breath = obj.type_of_breath;
+	this->moving_type = obj.moving_type;
+	this->heart_chamber_count = obj.heart_chamber_count;
+	this->characteristics_size = obj.characteristics_size;
+	this->characteristics = new string[this->characteristics_size];
+	for (int i = 0; i < this->characteristics_size; i++) {
+		this->characteristics[i] = obj.characteristics[i];
+	}
+
+}
+
+Vertebrate::Vertebrate(Vertebrate&& obj) {
 	this->body_temperature_dependency = obj.body_temperature_dependency;
 	this->metabolism = obj.metabolism;
 	this->skin_covering = obj.skin_covering;
@@ -42,7 +57,9 @@ Vertebrate::Vertebrate(const Vertebrate& obj) {
 	for (int i = 0; i < this->characteristics_size; i++) {
 		this->characteristics[i] = obj.characteristics[i];
 	}
-
+	delete[] obj.characteristics;
+	obj.characteristics = nullptr;
+	obj.characteristics_size = 0;
 }
 
 Vertebrate& Vertebrate::operator = (const Vertebrate& obj) {
@@ -60,6 +77,28 @@ Vertebrate& Vertebrate::operator = (const Vertebrate& obj) {
 		for (int i = 0; i < this->characteristics_size; i++) {
 			this->characteristics[i] = obj.characteristics[i];
 		}
+	}
+	return *this;
+}
+
+Vertebrate& Vertebrate::operator = (Vertebrate&& obj) {
+	if (this != &obj) {
+		this->body_temperature_dependency = obj.body_temperature_dependency;
+		this->metabolism = obj.metabolism;
+		this->skin_covering = obj.skin_covering;
+		this->type_of_breath = obj.type_of_breath;
+		this->moving_type = obj.moving_type;
+		this->heart_chamber_count = obj.heart_chamber_count;
+		this->characteristics_size = obj.characteristics_size;
+		delete[] this->characteristics;
+		this->characteristics = nullptr;
+		this->characteristics = new string[this->characteristics_size];
+		for (int i = 0; i < this->characteristics_size; i++) {
+			this->characteristics[i] = obj.characteristics[i];
+		}
+		delete[] obj.characteristics;
+		obj.characteristics = nullptr;
+		obj.characteristics_size = 0;
 	}
 	return *this;
 }
@@ -179,7 +218,16 @@ Cold_Blooded::Cold_Blooded() {
 Cold_Blooded::Cold_Blooded(const Cold_Blooded& obj) {
 	this->thermoregulation = obj.thermoregulation;
 }
+Cold_Blooded::Cold_Blooded(Cold_Blooded&& obj) {
+	this->thermoregulation = obj.thermoregulation;
+}
 Cold_Blooded& Cold_Blooded::operator = (const Cold_Blooded& obj) {
+	if (this != &obj) {
+		this->thermoregulation = obj.thermoregulation;
+	}
+	return *this;
+}
+Cold_Blooded& Cold_Blooded::operator = (Cold_Blooded&& obj) {
 	if (this != &obj) {
 		this->thermoregulation = obj.thermoregulation;
 	}
@@ -227,9 +275,28 @@ Fish::Fish(string t) {
 Fish::Fish(const Fish& obj) {
 	this->type = obj.type;
 }
+Fish::Fish(Fish&& obj){
+	cout << "Move constructor Fish" << endl;
+	this->type = obj.type;
+	this->set_skin_covering(obj.get_skin_covering());
+	this->set_type_of_breath(obj.get_type_of_breath());
+	this->set_moving_type(obj.get_moving_type());
+	this->set_heart_chamber_count(obj.get_heart_chamber_count());
+}
 Fish& Fish::operator = (const Fish& obj) {
 	if (this != &obj) {
 		this->type = obj.type;
+	}
+	return *this;
+}
+Fish& Fish::operator = (Fish&& obj){
+	cout << "Move operator assignment Fish" << endl;
+	if (this != &obj) {
+		this->type = obj.type;
+		this->set_skin_covering(obj.get_skin_covering());
+		this->set_type_of_breath(obj.get_type_of_breath());
+		this->set_moving_type(obj.get_moving_type());
+		this->set_heart_chamber_count(obj.get_heart_chamber_count());
 	}
 	return *this;
 }
@@ -299,11 +366,32 @@ Reptile::Reptile(const Reptile& obj) {
 	this->type = obj.type;
 	this->sound = obj.sound;
 }
+Reptile::Reptile(Reptile&& obj) {
+	cout << "Move constructor Reptile" << endl;
+	this->type = obj.type;
+	this->sound = obj.sound;
+	this->set_skin_covering(obj.get_skin_covering());
+	this->set_type_of_breath(obj.get_type_of_breath());
+	this->set_moving_type(obj.get_moving_type());
+	this->set_heart_chamber_count(obj.get_heart_chamber_count());
+}
 Reptile& Reptile::operator = (const Reptile& obj) {
 	if (this != &obj) {
 		this->type = obj.type;
 		this->sound = obj.sound;
 
+	}
+	return *this;
+}
+Reptile& Reptile::operator = (Reptile&& obj) {
+	cout << "Move operator assignment Reptile" << endl;
+	if (this != &obj) {
+		this->type = obj.type;
+		this->sound = obj.sound;
+		this->set_skin_covering(obj.get_skin_covering());
+		this->set_type_of_breath(obj.get_type_of_breath());
+		this->set_moving_type(obj.get_moving_type());
+		this->set_heart_chamber_count(obj.get_heart_chamber_count());
 	}
 	return *this;
 }
@@ -380,10 +468,31 @@ Amphibian::Amphibian(const Amphibian& obj) {
 	this->type = obj.type;
 	this->sound = obj.sound;
 }
+Amphibian::Amphibian(Amphibian&& obj) {
+	cout << "Move constructor Amphibian" << endl;
+	this->type = obj.type;
+	this->sound = obj.sound;
+	this->set_skin_covering(obj.get_skin_covering());
+	this->set_type_of_breath(obj.get_type_of_breath());
+	this->set_moving_type(obj.get_moving_type());
+	this->set_heart_chamber_count(obj.get_heart_chamber_count());
+}
 Amphibian& Amphibian::operator = (const Amphibian& obj) {
 	if (this != &obj) {
 		this->type = obj.type;
 		this->sound = obj.sound;
+	}
+	return *this;
+}
+Amphibian& Amphibian::operator = (Amphibian&& obj) {
+	cout << "Move operator assignment Amphibian" << endl;
+	if (this != &obj) {
+		this->type = obj.type;
+		this->sound = obj.sound;
+		this->set_skin_covering(obj.get_skin_covering());
+		this->set_type_of_breath(obj.get_type_of_breath());
+		this->set_moving_type(obj.get_moving_type());
+		this->set_heart_chamber_count(obj.get_heart_chamber_count());
 	}
 	return *this;
 }
@@ -478,6 +587,14 @@ Bird::Bird(string t) {
 	this->set_type_of_breath("lungs and sacs");
 	this->set_moving_type("walking and flying");
 }
+Bird::Bird(Bird&& obj) {
+	cout << "Move constructor Bird" << endl;
+	this->type = obj.type;
+	this->sound = obj.sound;
+	this->set_skin_covering(obj.get_skin_covering());
+	this->set_type_of_breath(obj.get_type_of_breath());
+	this->set_moving_type(obj.get_moving_type());
+}
 Bird::Bird(const Bird& obj) {
 	this->type = obj.type;
 	this->sound = obj.sound;
@@ -486,6 +603,17 @@ Bird& Bird::operator = (const Bird& obj) {
 	if (this != &obj) {
 		this->sound = obj.sound;
 		this->type = obj.type;
+	}
+	return *this;
+}
+Bird& Bird::operator = (Bird&& obj) {
+	cout << "Move operator assignment Bird" << endl;
+	if (this != &obj) {
+		this->sound = obj.sound;
+		this->type = obj.type;
+		this->set_skin_covering(obj.get_skin_covering());
+		this->set_type_of_breath(obj.get_type_of_breath());
+		this->set_moving_type(obj.get_moving_type());
 	}
 	return *this;
 }
@@ -562,10 +690,29 @@ Mammal::Mammal(const Mammal& obj) {
 	this->type = obj.type;
 	this->sound = obj.sound;
 }
+Mammal::Mammal(Mammal&& obj) {
+	cout << "Move constructor Mammal" << endl;
+	this->type = obj.type;
+	this->sound = obj.sound;
+	this->set_skin_covering(obj.get_skin_covering());
+	this->set_type_of_breath(obj.get_type_of_breath());
+	this->set_moving_type(obj.get_moving_type());
+}
 Mammal& Mammal::operator = (const Mammal& obj) {
 	if (this != &obj) {
 		this->type = obj.type;
 		this->sound = obj.sound;
+	}
+	return *this;
+}
+Mammal& Mammal::operator = (Mammal&& obj) {
+	cout << "Move operator assignment Mammal" << endl;
+	if (this != &obj) {
+		this->type = obj.type;
+		this->sound = obj.sound;
+		this->set_skin_covering(obj.get_skin_covering());
+		this->set_type_of_breath(obj.get_type_of_breath());
+		this->set_moving_type(obj.get_moving_type());
 	}
 	return *this;
 }
